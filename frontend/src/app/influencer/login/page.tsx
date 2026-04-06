@@ -79,6 +79,10 @@ export default function Page() {
         throw new Error('Only influencer accounts can login here')
       }
 
+      if (!token) {
+        throw new Error('Login failed: No token received')
+      }
+
       if (typeof window !== 'undefined') {
         saveAuthSession('influencer', token, user)
       }

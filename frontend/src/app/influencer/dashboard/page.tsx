@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { ChangeEvent, FormEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import axios from "axios";
 import styles from "./InfluencerDashboard.module.css";
@@ -53,7 +54,8 @@ const ProfileForm = dynamic(() => import("./components/ProfileForm"), {
   loading: () => <div className="p-6">Loading profile form...</div>,
 });
 
-export default function InfluencerDashboard() {
+function InfluencerDashboardClient() {
+  "use client";
   const router = useRouter();
   const searchParams = useSearchParams();
   const host = typeof window !== "undefined" ? window.location.hostname : "localhost";
@@ -835,5 +837,13 @@ export default function InfluencerDashboard() {
 
       <Footer />
     </section>
+  );
+}
+
+export default function InfluencerDashboard() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <InfluencerDashboardClient />
+    </Suspense>
   );
 }

@@ -676,7 +676,7 @@ export default function CampaignApplicantsPage() {
                           <button
                             type="button"
                             className={`${styles["manage-action-btn"]} ${styles["manage-action-success"]}`.trim()}
-                            disabled={isBusy || currentTab === "selected" || currentTab === "paid"}
+                            disabled={isBusy || currentTab === "selected"}
                             onClick={() => void updateApplicationStatus(application._id, "accepted")}
                           >
                             Accept

@@ -97,6 +97,11 @@ export default function Page() {
         return
       }
 
+      if (!token) {
+        alert('Login failed: No token received')
+        return
+      }
+
       if (typeof window !== 'undefined') {
         saveAuthSession('brand', token, user)
       }

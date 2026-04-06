@@ -33,6 +33,8 @@ const EMPTY_FORM: CampaignForm = {
   budget: "",
   description: "",
   timeline: "",
+  numberOfInfluencers: "",
+  pricePerInfluencer: "",
 };
 
 type CampaignStatus = "pending" | "active" | "approved" | "completed" | "closed";
@@ -143,6 +145,8 @@ export default function AdminCampaignEditPage() {
           budget: String(selected.budget ?? ""),
           description: parseMainDescription(selected.description || ""),
           timeline: selected.timeline || "",
+          numberOfInfluencers: "",
+          pricePerInfluencer: "",
         });
 
         setStatus(selected.status === "rejected" ? "pending" : selected.status);
